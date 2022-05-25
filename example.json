@@ -1,0 +1,40 @@
+{
+    "doi":"",
+    "url":"",
+    "title":"",
+    "abstract":"",
+    "keywords":[""],
+    "journal":[""],
+    "authors": [
+        {
+            "given_name":"",
+            "last_name":"",
+            "title":"",
+            "affiliation":"",
+            "orcid":"",
+            "role":""
+        }
+    ],
+    "text":[
+        {
+            "sec_title":"", 
+            "sec_content":""
+        }
+    ],
+    "references": [
+        {
+            "doi":"",
+            "authors": [
+                {
+                    "given_name":"",
+                    "last_name":"",
+                    "title":"",
+                    "affiliation":"",
+                    "orcid":"",
+                    "role":""
+                }
+            ],
+            "title":""
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:prism="http://purl.org/rss/1.0/modules/prism/">
+  <channel>
+    <title>Journal of Communication Open Access</title>
+    <link>http://academic.oup.com/joc</link>
+    <description>
+    </description>
+    <language>en-us</language>
+    <pubDate>Wed, 30 Mar 2022 00:00:00 GMT</pubDate>
+    <lastBuildDate>Thu, 14 Apr 2022 13:55:16 GMT</lastBuildDate>
+    <generator>Silverchair</generator>
+    <item xmlns:rdf="https://academic.oup.com/joc/article/72/2/214/6548826">
+      <title>Partisan Blocking: Biased Responses to Shared Misinformation Contribute to Network Polarization on Social Media</title>
+      <link>https://academic.oup.com/joc/article/72/2/214/6548826?rss=1</link>
+      <pubDate>Wed, 30 Mar 2022 00:00:00 GMT</pubDate>
+      <author>Kaiser J, Vaccari C, Chadwick A. </author>
+      <description>&lt;span class="paragraphSection"&gt;&lt;div class="boxTitle"&gt;Abstract&lt;/div&gt;Researchers know little about how people respond to misinformation shared by their social media “friends.” Do responses scale up to distort the structure of online networks? We focus on an important yet under-researched response to misinformation—blocking or unfollowing a friend who shares it—and assess whether this is influenced by political similarity between friends. Using a representative sample of social media users (n = 968), we conducted two 2 × 2 between-subjects experiments focusing on two political issues and individuals’ political ideology as a quasi-factor. The first factor manipulated who shared the misinformation (politically similar vs. dissimilar friend); the second manipulated the misinformation’s plausibility (implausible vs. moderately plausible). Our findings, which replicated across political issues and levels of plausibility, reveal that social media users, particularly left-wing users, are more likely to block and unfollow politically dissimilar than similar friends who share misinformation. Partisan blocking contributes to network polarization on social media.&lt;/span&gt;</description>
+      <prism:volume xmlns:prism="prism">72</prism:volume>
+      <prism:number xmlns:prism="prism">2</prism:number>
+      <prism:startingPage xmlns:prism="prism">214</prism:startingPage>
+      <prism:endingPage xmlns:prism="prism">240</prism:endingPage>
+      <prism:doi xmlns:prism="prism">10.1093/joc/jqac002</prism:doi>
+      <guid>http://doi.org/10.1093/joc/jqac002</guid>
+    </item>
+    <item xmlns:rdf="https://academic.oup.com/joc/advance-article/doi/10.1093/joc/jqac011/6555289">
+      <title>The Great and Powerful Dr. Oz? Alternative Health Media Consumption and Vaccine Views in the United States</title>
+      <link>https://academic.oup.com/joc/advance-article/doi/10.1093/joc/jqac011/6555289?rss=1</link>
+      <pubDate>Tue, 29 Mar 2022 00:00:00 GMT</pubDate>
+      <author>Stecula D, Motta M, Kuru O, et al. </author>
+      <description>&lt;span class="paragraphSection"&gt;&lt;div class="boxTitle"&gt;Abstract&lt;/div&gt;Cardiothoracic surgeon Dr. Mehmet Oz, until recently the host of a nationally syndicated U.S. television show, is among the media figures who have espoused health views unsanctioned by established medical authorities such as the Center for Disease Control and Prevention and the Food and Drug Administration. In a large, probability-based national longitudinal study, we examine the prevalence and consequences of consuming alternative health media (AHM), such as &lt;span style="font-style:italic;"&gt;The Dr. Oz Show&lt;/span&gt;. Drawing on data from a naturally occurring and time-varying quasi-experiment, we demonstrate that such programming may be able to shift the attitudes of its audience on consequential health topics. Specifically, Oz’s endorsement of the MMR vaccine was associated with a shift in acceptance among a segment of his audience. Our study demonstrates both the persuasive power of AHM and its capacity to align the views of its low-knowledge audience members with CDC and FDA-consistent science, should its trusted sources choose to do so.&lt;/span&gt;</description>
+      <prism:startingPage xmlns:prism="prism">jqac011</prism:startingPage>
+      <prism:doi xmlns:prism="prism">10.1093/joc/jqac011</prism:doi>
+      <guid>http://doi.org/10.1093/joc/jqac011</guid>
+    </item>
+  </channel>
+</rss>

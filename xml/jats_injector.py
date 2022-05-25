@@ -22,12 +22,19 @@ authors = [
         "role": [""]
     }]
 
-unique_affiliations = list(set([author["affiliation"] for author in authors]))
-unique_affiliations.sort()
+abstract = "this is a stupid article. Don't read it."
 
-affiliation_ids = list(range(0, len(unique_affiliations)))
-
-def gen_author_node(last_name, given_name, orcid):
+def gen_affiliation_dict(authors):
+    unique_affiliations = list(set([author["affiliation"] for author in authors]))
+    unique_affiliations.sort()
+    affiliation_ids = list(range(0, len(unique_affiliations)))
+    aff_dict = dict()
+    for aid, aff in zip(affiliation_ids, unique_affiliations):
+        aff_dict[aff] = (aid + 1, 'aff' + '{:0>3}'.format(aid + 1))
+    return(aff_dict)
+    
+def gen_author_node(last_name, given_name, orcid, affiliation, aff_dict):
+    """generate a html node based on author info"""
     x = ET.Element("contrib", {"contrib-type": "author", "xlink:type": "simple"})
     if orcid:
         contribid_tag = ET.SubElement(x, "contrib-id", {"authenticated": "true", "contrib-id-type": "orcid"})
@@ -37,8 +44,13 @@ def gen_author_node(last_name, given_name, orcid):
     surname_tag.text = last_name
     given_names_tag = ET.SubElement(name_tag, "given-names")
     given_names_tag.text = given_name
+    aff_info = aff_dict[affiliation]
+    xref = ET.SubElement(x, "xref", {"ref-type": "aff", "rid": aff_info[1]})
+    sup = ET.SubElement(xref, "sup")
+    sup.text = str(aff_info[0])
     return(x)
 
+aff_dict = gen_affiliation_dict(authors)
 
 root_node = ET.Element("article",attrib = {"article-type": "research-article", "dtd-version": "1.1d3", "xml:lang": "en"})
 
@@ -74,4 +86,17 @@ article_title_node.text = title
 contrib_group_node = ET.SubElement(articlemeta_node, "contrib-group")
 
 for author in authors:
-    contrib_group_node.append(gen_author_node(author["last_name"], author["given_name"], author["orcid"]))
+    contrib_group_node.append(gen_author_node(author["last_name"], author["given_name"], author["orcid"], author["affiliation"], aff_dict))
+
+for aff_key in aff_dict:
+    aff_info = aff_dict[aff_key]
+    aff_node = ET.SubElement(articlemeta_node, "aff", {"id": aff_info[1]})
+    label_node = ET.SubElement(aff_node, "label")
+    label_node.text = str(aff_info[0])
+    addr_node = ET.SubElement(aff_node, "addr-line")
+    addr_node.text = aff_key
+
+abstract_node = ET.SubElement(articlemeta_node, "abstract")
+_ = ET.SubElement(abstract_node, "p")
+_.text = abstract
+

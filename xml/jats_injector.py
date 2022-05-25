@@ -1,28 +1,29 @@
 import xml.etree.ElementTree as ET
+import json
 
-journal = "Journal of Communication"
-doi = "10.1371/journal.pone.0268038"
-title = "25-hydroxyvitamin D is a predictor of COVID-19 severity of hospitalized patients"
+# journal = "Journal of Communication"
+# doi = "10.1371/journal.pone.0268038"
+# title = "25-hydroxyvitamin D is a predictor of COVID-19 severity of hospitalized patients"
 
-authors = [
-    {
-    "last_name": "Mohamed",
-    "given_name": "Nada A.",
-    "title": "",
-    "affiliation": "Department of Linguistics and Basque Studies, Universidad del País Vasco/Euskal Herriko Unibertsitatea (UPV/EHU), Vitoria-Gasteiz, Spain",
-    "orcid": "https://orcid.org/0000-0002-6232-7530",
-    "role": [""]
-    },
-    {
-        "last_name": "Chan",
-        "given_name": "Chung-hong",
-        "title": "",
-        "affiliation": "Universität Wien, Vienna, Austria",
-        "orcid": "",
-        "role": [""]
-    }]
+# authors = [
+#     {
+#     "last_name": "Mohamed",
+#     "given_name": "Nada A.",
+#     "title": "",
+#     "affiliation": "Department of Linguistics and Basque Studies, Universidad del País Vasco/Euskal Herriko Unibertsitatea (UPV/EHU), Vitoria-Gasteiz, Spain",
+#     "orcid": "https://orcid.org/0000-0002-6232-7530",
+#     "role": [""]
+#     },
+#     {
+#         "last_name": "Chan",
+#         "given_name": "Chung-hong",
+#         "title": "",
+#         "affiliation": "Universität Wien, Vienna, Austria",
+#         "orcid": "",
+#         "role": [""]
+#     }]
 
-abstract = "this is a stupid article. Don't read it."
+# abstract = "this is a stupid article. Don't read it."
 
 def gen_affiliation_dict(authors):
     unique_affiliations = list(set([author["affiliation"] for author in authors]))
@@ -86,7 +87,12 @@ def gen_front_node(authors, journal, doi, title, abstract):
     _ = ET.SubElement(abstract_node, "p")
     _.text = abstract
     return(front_node)
-    
+
+f = open("rubbish.json")
+data = json.load(f)
+f.close()
+
 root_node = ET.Element("article",attrib = {"article-type": "research-article", "dtd-version": "1.1d3", "xml:lang": "en"})
-front_node = gen_front_node(authors, journal, doi, title, abstract)
+front_node = gen_front_node(data['authors'], data['journal'][0], data['doi'], data['title'], data['abstract'])
 root_node.append(front_node)
+

@@ -1,0 +1,68 @@
+{
+    "doi":"what",
+    "url":"aaaaaaaaaaaaaaaaaa",
+    "title":"sadasd",
+    "abstract":"ipsum ipsum",
+    "keywords":["a", "b", "c"],
+    "journal":["Journal of Making Articles Not Machine Readable"],
+    "authors": [
+        {
+            "given_name":"Alex",
+            "last_name":"Murphy",
+            "title":"Officer",
+            "affiliation":"OCP",
+            "orcid":"alex-murphy-orcid",
+            "role":""
+        },
+	{
+            "given_name":"T-1000",
+            "last_name":"Terminator",
+            "title":"Killer",
+            "affiliation":"Skynet",
+            "orcid":"terminator-orcid",
+            "role":""
+        }
+
+    ],
+    "text":[
+        {
+            "sec_title":"Introduction", 
+            "sec_content":"ipsum ipsum ipsum ipsum"
+        },
+        {
+            "sec_title":"Method", 
+            "sec_content":"ipsum ipsum ipsum ipsum viola"
+        }
+	
+    ],
+    "references": [
+        {
+            "doi":"ref1",
+            "authors": [
+                {
+                    "given_name":"",
+                    "last_name":"",
+                    "title":"",
+                    "affiliation":"",
+                    "orcid":"",
+                    "role":""
+                }
+            ],
+            "title":""
+        },
+	        {
+            "doi":"ref2",
+            "authors": [
+                {
+                    "given_name":"",
+                    "last_name":"",
+                    "title":"",
+                    "affiliation":"",
+                    "orcid":"",
+                    "role":""
+                }
+            ],
+            "title":""
+        }
+    ]
+}

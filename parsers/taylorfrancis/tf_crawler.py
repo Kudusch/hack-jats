@@ -42,7 +42,7 @@ def get_references(bib_string):
         journal = re.findall(r"journal = {(.*?)}", m.group(0), re.IGNORECASE)
         volume = re.findall(r"volume = {(.*?)}", m.group(0), re.IGNORECASE)
         authors = [HumanName(author) for author in re.findall(r"author = {(.*?)}", m.group(0), re.IGNORECASE)]
-        authors = [{"name":str(author), "first_name":author.first, "last_name":author.last} for author in authors]
+        authors = [{"name":str(author), "first_name":author.first, "last_name":author.last, "affiliation":"", "orcid":"", "role":""} for author in authors]
         refs_dicts.append({
             "title":title[0],
             "year":year[0],
@@ -68,9 +68,9 @@ def get_authors(doi):
     for m in matches:
         try:
             name = HumanName(m.group(1))
-            auths.append({"last_name":name.last, "first_name":name.first, "name":str(name).strip()})
+            auths.append({"last_name":name.last, "first_name":name.first, "name":str(name).strip(), "affiliation":"", "orcid":"", "role":""})
         except:
-            auths.append({"last_name":"", "first_name":"", "name":m.group(1).strip()})
+            auths.append({"last_name":"", "first_name":"", "name":m.group(1).strip(), "affiliation":"", "orcid":"", "role":""})
         # try:
         #     last_name, first_name = [n.strip() for n in m.group(1).split(", ")]
         # except:
@@ -90,7 +90,7 @@ def download_article(doi, file = ""):
     parsed_article["volume"] = parsed_bib["volume"].strip()
     parsed_article["year"] = parsed_bib["year"].strip()
     parsed_article["issue"] = parsed_bib["number"].strip()
-    parsed_article["journal_name"] = parsed_bib["journal"].strip()
+    parsed_article["journal"] = parsed_bib["journal"].strip()
     parsed_article["publisher"] = parsed_bib["publisher"].strip()
     parsed_article["authors"] = authors
 
@@ -110,7 +110,7 @@ def download_article(doi, file = ""):
 
     for n, sec in enumerate(sections_raw):
         h = get_heading(sec)
-        sections_parsed.append({"title": h, "paragraphs":[p.text for p in sec.find_all("p")]})
+        sections_parsed.append({"sec_title": h, "sec_content":[p.text for p in sec.find_all("p")]})
 
     parsed_article["body"] = sections_parsed
 

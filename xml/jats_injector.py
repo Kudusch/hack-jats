@@ -36,7 +36,8 @@ def gen_affiliation_dict(authors):
     
 def gen_author_node(last_name, given_name, orcid, affiliation, aff_dict):
     """generate a html node based on author info"""
-    x = ET.Element("contrib", {"contrib-type": "author", "xlink:type": "simple"})
+    ##    x = ET.Element("contrib", {"contrib-type": "author", "xlink:type": "simple"})
+    x = ET.Element("contrib", {"contrib-type": "author"})
     if orcid:
         contribid_tag = ET.SubElement(x, "contrib-id", {"authenticated": "true", "contrib-id-type": "orcid"})
         contribid_tag.text = orcid
@@ -88,11 +89,27 @@ def gen_front_node(authors, journal, doi, title, abstract):
     _.text = abstract
     return(front_node)
 
-f = open("rubbish.json")
-data = json.load(f)
-f.close()
+def gen_body_node(text):
+    """text should be a list of sections"""
+    cur_section_id = 1
+    body_node = ET.Element("body")
+    for section in text:
+        par = {"id": '{:0>3}'.format(cur_section_id)}
+        if cur_section_id == 1:
+            par['sec-type'] = "intro"
+        sec_node = ET.SubElement(body_node, "sec", par)
+        title_node = ET.SubElement(sec_node, "title")
+        title_node.text = section['sec_title']
+        _ = ET.SubElement(sec_node, "p")
+        _.text = section['sec_content']
+        cur_section_id = cur_section_id + 1
+    return(body_node)
 
-root_node = ET.Element("article",attrib = {"article-type": "research-article", "dtd-version": "1.1d3", "xml:lang": "en"})
-front_node = gen_front_node(data['authors'], data['journal'][0], data['doi'], data['title'], data['abstract'])
-root_node.append(front_node)
-
+def convert_jats(data):
+    root_node = ET.Element("article",attrib = {"article-type": "research-article", "dtd-version": "1.1d3"})
+    front_node = gen_front_node(data['authors'], data['journal'][0], data['doi'], data['title'], data['abstract'])
+    body_node = gen_body_node(data['text'])
+    root_node.append(front_node)
+    root_node.append(body_node)
+    return(ET.tostring(root_node).decode('utf-8'))
+    

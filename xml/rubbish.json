@@ -11,7 +11,7 @@
             "last_name":"Murphy",
             "title":"Officer",
             "affiliation":"OCP",
-            "orcid":"alex-murphy-orcid",
+            "orcid":"https://orcid.org/0000-0002-6232-7530",
             "role":""
         },
 	{
@@ -19,7 +19,7 @@
             "last_name":"Terminator",
             "title":"Killer",
             "affiliation":"Skynet",
-            "orcid":"terminator-orcid",
+            "orcid":"https://orcid.org/0000-0002-6232-7530",
             "role":""
         }
 
@@ -37,33 +37,45 @@
     ],
     "references": [
         {
-            "doi":"ref1",
+            "doi":"https://doi.org/10.1093/joc/jqac9999",
             "authors": [
                 {
-                    "given_name":"",
-                    "last_name":"",
-                    "title":"",
-                    "affiliation":"",
-                    "orcid":"",
+                    "given_name":"RX-78-2",
+                    "last_name":"Gundam",
+		    "full_name":"",
+                    "title":"Robot",
+                    "affiliation":"UG",
+                    "orcid":"https://orcid.org/0000-0002-6232-7530",
                     "role":""
-                }
+                },
+		{
+                    "given_name":"RX-79-2",
+                    "last_name":"Gun Cannon",
+		    "full_name":"",
+                    "title":"Robot",
+                    "affiliation":"UG",
+                    "orcid":"https://orcid.org/0000-0002-6232-7530",
+                    "role":""
+		}
             ],
-            "title":""
+            "title":"White Base: A User Manual"
         },
 	        {
-            "doi":"ref2",
+            "doi":"",
             "authors": [
                 {
-                    "given_name":"",
-                    "last_name":"",
+                    "given_name":"Mazinger",
+                    "last_name":"Z",
+		    "full_name":"",
                     "title":"",
                     "affiliation":"",
                     "orcid":"",
                     "role":""
                 }
             ],
-		    "title":"",
-		    "journal": "Journal of Whereaboutism"
+		    "title":"Hover Piler: The User Manual",
+		    "journal": "Journal of Whereaboutism",
+		    "year": "2019"
         }
     ]
 }

@@ -1,30 +1,6 @@
 import xml.etree.ElementTree as ET
 import json
 
-# journal = "Journal of Communication"
-# doi = "10.1371/journal.pone.0268038"
-# title = "25-hydroxyvitamin D is a predictor of COVID-19 severity of hospitalized patients"
-
-# authors = [
-#     {
-#     "last_name": "Mohamed",
-#     "given_name": "Nada A.",
-#     "title": "",
-#     "affiliation": "Department of Linguistics and Basque Studies, Universidad del País Vasco/Euskal Herriko Unibertsitatea (UPV/EHU), Vitoria-Gasteiz, Spain",
-#     "orcid": "https://orcid.org/0000-0002-6232-7530",
-#     "role": [""]
-#     },
-#     {
-#         "last_name": "Chan",
-#         "given_name": "Chung-hong",
-#         "title": "",
-#         "affiliation": "Universität Wien, Vienna, Austria",
-#         "orcid": "",
-#         "role": [""]
-#     }]
-
-# abstract = "this is a stupid article. Don't read it."
-
 def gen_affiliation_dict(authors):
     unique_affiliations = list(set([author["affiliation"] for author in authors]))
     unique_affiliations.sort()
@@ -105,11 +81,33 @@ def gen_body_node(text):
         cur_section_id = cur_section_id + 1
     return(body_node)
 
+def gen_ref_list_node(refs):
+    rid = 1
+    ref_list_node = ET.Element("ref-list")
+    for ref in refs:
+        ref_node = ET.Element("ref", {"id": "B" + str(rid)})
+        article_title_node = ET.SubElement(ref_node, "article-title")
+        article_title_node.text = ref['title']
+        if ref['doi']:
+            doi_node = ET.SubElement(ref_node, "pub-id", {"pub-id-typ":"doi"})
+            doi_node.text = ref['doi']            
+        ref_list_node.append(ref_node)            
+        rid = rid + 1
+    return(ref_list_node)
+
 def convert_jats(data):
-    root_node = ET.Element("article",attrib = {"article-type": "research-article", "dtd-version": "1.1d3"})
+    root_node = ET.Element("article",attrib = {"article-type": "research-article", "dtd-version": "1.1d3", "xmlns:mml": "http://www.w3.org/1998/Math/MathML", "xmlns:xlink": "http://www.w3.org/1999/xlink"})
     front_node = gen_front_node(data['authors'], data['journal'][0], data['doi'], data['title'], data['abstract'])
     body_node = gen_body_node(data['text'])
+    back_node = ET.Element("back")
+    back_node.append(gen_ref_list_node(data['references']))
     root_node.append(front_node)
     root_node.append(body_node)
+    root_node.append(back_node)
     return(ET.tostring(root_node).decode('utf-8'))
-    
+
+
+# f = open("rubbish.json")
+# data = json.load(f)
+# f.close()
+

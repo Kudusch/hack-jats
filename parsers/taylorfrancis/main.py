@@ -3,6 +3,20 @@
 
 import tf_crawler as tf
 
-doi = "10.1080/21670811.2021.1962728"
+import sys
 
-article = tf.download_article(doi, "test.json")
+def slugify(value):
+    return(value.replace("/", "_"))
+
+if ".txt" in sys.argv[1]:
+    with open(sys.argv[1], "r") as f:
+        dois = [doi.strip() for doi in f.readlines()]
+else:
+    dois = [sys.argv[1]]
+
+for doi in dois:
+    print(doi)
+    try:
+        tf.download_article(doi, file = f"example/{slugify(doi)}.json")
+    except:
+        pass

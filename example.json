@@ -9,6 +9,7 @@
         {
             "given_name":"",
             "last_name":"",
+            "full_name": "",
             "title":"",
             "affiliation":"",
             "orcid":"",
@@ -28,12 +29,15 @@
                 {
                     "given_name":"",
                     "last_name":"",
+                    "full_name": "",
                     "title":"",
                     "affiliation":"",
                     "orcid":"",
                     "role":""
                 }
             ],
+            "journal": "",
+            "year": "",
             "title":""
         }
     ]
